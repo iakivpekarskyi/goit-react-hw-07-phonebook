@@ -18,7 +18,7 @@ export const App = () => {
         <h1>Phone book</h1>
         <ContactForm />
         <h2>Contacts</h2>
-        {contacts && contacts.length !== 0 && <Filter />}
+        {<Filter />}
         <ContactList />
       </ErrorBoundary>
     </Layout>
