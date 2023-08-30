@@ -4,14 +4,10 @@ import {
   Button,
   ButtonContainer,
 } from './ContactListItem.styled';
-import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { useContacts } from 'hooks/useContact';
 
 export const ContactListItem = ({ id, name, number }) => {
-  const dispatch = useDispatch();
-  const handleDeleteContact = () => {
-    dispatch(deleteContact(id));
-  };
+  const { removeContact } = useContacts();
 
   return (
     <ListItem>
@@ -19,7 +15,7 @@ export const ContactListItem = ({ id, name, number }) => {
         {name}: {number}
       </Text>
       <ButtonContainer>
-        <Button type="button" onClick={handleDeleteContact}>
+        <Button type="button" onClick={() => removeContact(id)}>
           Delete Contact
         </Button>
       </ButtonContainer>

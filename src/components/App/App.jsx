@@ -5,11 +5,15 @@ import { ContactList } from '../ContactList/ContactList';
 import { Filter } from '../Filter/Filter';
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary';
 
-import { useSelector } from 'react-redux';
-import { getContacts } from 'redux/selectors';
+import { useEffect } from 'react';
+import { useContacts } from 'hooks/useContact';
 
 export const App = () => {
-  const contacts = useSelector(getContacts);
+  const { contacts, fetchAllContacts } = useContacts();
+
+  useEffect(() => {
+    fetchAllContacts();
+  }, [fetchAllContacts]);
 
   return (
     <Layout>

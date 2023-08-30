@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { FilterWrap } from './Filter.styled';
 import { FilterInput } from './Filter.styled';
-import { getFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 import { setFilter } from 'redux/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(getFilter);
+  const filter = useSelector(selectFilter);
 
   const onFilterChange = event => {
     console.log('Typed value:', event.target.value);
