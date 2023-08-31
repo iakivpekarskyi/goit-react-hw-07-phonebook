@@ -30,16 +30,13 @@ const initialValues = {
 };
 
 export const ContactForm = () => {
-  const { addNewContact, fetchAllContacts } = useContacts();
-  const allContacts = useSelector(selectContacts);
+  const { addNewContact, contacts } = useContacts();
 
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      await fetchAllContacts();
-
       const newName = values.name;
 
-      if (allContacts.find(contact => contact.name === newName)) {
+      if (contacts.find(contact => contact.name === newName)) {
         alert(`${newName} is already in contacts list`);
         return;
       }
